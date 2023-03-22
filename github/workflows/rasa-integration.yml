@@ -1,0 +1,39 @@
+#  .github/workflows/rasa-integration.yml
+# The folloiwng yml file in used to deploy the Rasa bot on main and
+# start the training and testing od bot and save results
+
+name: Train and Test Rasa
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+jobs:
+  training-testing:
+    name: Training and Testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Rasa Training and Testing Bot Github Action
+        uses: samarth-jangda/Rasa-Train-Test@main
+        with:
+          data_validates: true
+          rasa_train: true
+          rasa_test: --folds 3
+          test_args: --fail-on-prediction-errors
+          test_type: all
+      - name: Uploading Rasa Model    
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@main
+        with:
+          name: RasaModel
+          path: models
+      - name: Store testing results of RasaModel
+        uses: actions/upload-artifact@v3
+        with:
+          name: testing-results
+          path: |
+            results/story_confusion_matrix.png
+            results/story_report.json

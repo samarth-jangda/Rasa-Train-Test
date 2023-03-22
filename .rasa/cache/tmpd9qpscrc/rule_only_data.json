@@ -1,0 +1,6 @@
+{
+  "rule_only_slots": [],
+  "rule_only_loops": [
+    "money_transfer_form"
+  ]
+}

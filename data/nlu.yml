@@ -1,0 +1,142 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: utter_chithcat/ask_name
+  examples: |
+    - who are you exactly ?
+    - who am I talking to
+    - what is your name
+
+- intent: utter_chitchat/ask_frauds
+  exaples: |
+    - what if there will be a fraud
+    - what is someone steals my money
+    - Is this completely safe
+
+- intent: money_transfer
+  examples: |
+    - can you help me out with transferring of money
+    - I need some help in transferring money
+    - help me in money transferring
+    - I am [Samarth](person_name)
+    - My name is [Rahul](person_name)
+    - [Rohan](person_name)
+    - Bank is [ICICI](bank)
+    - Bank name is [Allahabad](bank)
+    - [Indian](bank)
+    - I want to to transfer [1 lakh](amount)
+    - Around [10000](amount)
+    - It will be around [20k](amount)
+    - [18000](amount)
+    - [10 thousand](amount)
+    - [10 lakh](amount)
+    - [Haryana](state)
+    - I want to transfer in [Jaipur](state)
+    - To [Ghaziabad](state)
+    - I want to transfer money
+    - To transfer from [ICICI](bank)
+    - I want to transfer around [3 lakhs](amount)
+    - from [Haryana](state)
+    - To transfer money
+    - I am [Samarth](person_name)
+    - From [Indian](bank)
+    - Around [5000](amount)
+    - To [Haryana](state)
+    - to [delhi](state)
+    - I want to transfer to [tamil nadu](state)
+    - [jaipur](state)
+    - [mumbai](state)
+    - [himachal](state)
+- intent: need_help
+  examples: |
+    - I need some help
+    - Can you help me out
+    - I want some help
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - yes okay bye
+    - Okay thankyou bye
+    - Okay thankyou so much
+    - Thankyou so much
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+    - I am fine
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+    - pasta
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?

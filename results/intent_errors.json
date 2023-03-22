@@ -1,0 +1,18 @@
+[
+  {
+    "text": "to delhi",
+    "intent": "money_transfer",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.9453681707382202
+    }
+  },
+  {
+    "text": "himachal",
+    "intent": "money_transfer",
+    "intent_prediction": {
+      "name": "greet",
+      "confidence": 0.5500313639640808
+    }
+  }
+]

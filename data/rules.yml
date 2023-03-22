@@ -1,0 +1,60 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Wheneve user ask for "help" run
+  steps:
+  - intent: need_help
+  - action: utter_need_help
+
+- rule: Greeting User
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Activate form
+  steps:
+  - intent: money_transfer
+  - action: money_transfer_form
+  - active_loop: money_transfer_form
+
+- rule: respond to chitchat
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat
+
+- rule: Submit form
+  condition:
+  # Condition that form is active.
+  - active_loop: money_transfer_form
+  steps:
+  # Form is deactivated
+  - action: money_transfer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  # The actions we want to run when the form is submitted.
+  - action: utter_submit
+  - action: utter_slot_values  
+
+- rule: Example of an unhappy path
+  condition:
+  # Condition that form is active.
+  - active_loop: money_transfer_form
+  steps:
+  # This unhappy path handles the case of an intent `chitchat`.
+  - intent: chitchat
+  - action: utter_chitchat
+  # Return to form after handling the `chitchat` intent
+  - action: money_transfer_form
+  - active_loop: money_transfer_form  

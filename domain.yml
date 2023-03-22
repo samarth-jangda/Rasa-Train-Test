@@ -1,0 +1,95 @@
+version: '3.1'
+intents:
+- affirm
+- bot_challenge
+- deny
+- goodbye
+- greet
+- money_transfer
+- mood_great
+- mood_unhappy
+- need_help
+- chitchat
+
+entities:
+- amount
+- bank
+- person_name
+- state
+slots:
+  person_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: person_name
+      intent: money_transfer
+  bank_name:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: bank
+      intent: money_transfer
+  transfer_amount:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: amount
+      intent: money_transfer
+  transfer_state:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: state
+      intent: money_transfer
+forms:
+  
+  money_transfer_form:
+    required_slots:
+    - person_name
+    - bank_name
+    - transfer_amount
+    - transfer_state
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_need_help:
+  - text: How can I help you ?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_person_name:
+  - text: Please tell me your name
+  utter_ask_bank_name:
+  - text: From which bank you want to transfer money ?
+  utter_ask_transfer_amount:
+  - text: How much amount do you want to transfer ?
+  utter_ask_transfer_state:
+  - text: To which state you want to transfer your amount ?
+  utter_submit:
+  - text: Okay I have your order
+  utter_slot_values:
+  - text: I have your details that you name is {person_name} who wants to ytransfer amount of {transfer_amount} from bank {bank_name} to state {transfer_state}
+  utter_chitchat/ask_name:
+  - text: I am a simple bot here to help you in transferring your money
+  utter_chitchat/ask_frauds:
+  - text: Don't worry about that I will safely transfer your money to your destination.
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+actions:
+- utter_need_help
+- utter_greet
+- validate_money_transfer_form
+- utter_submit
+- utter_slot_values
+- utter_goodbye

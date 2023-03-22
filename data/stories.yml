@@ -1,0 +1,102 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: need_help
+  - action: utter_need_help
+  
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: need_help
+  - action: utter_need_help
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: need_help
+  - action: utter_need_help
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_need_help
+  - intent: money_transfer
+  - action: money_transfer_form
+  - active_loop: money_transfer_form
+  - slot_was_set:
+    - requested_slot: person_name
+  - slot_was_set:
+    - person_name: Samarth
+  - slot_was_set:
+    - requested_slot: bank_name
+  - slot_was_set:
+    - bank_name: ICICI
+  - slot_was_set:
+    - requested_slot: transfer_amount
+  - slot_was_set:
+    - transfer_amount: 3 lakhs
+  - slot_was_set:
+    - requested_slot: transfer_state
+  - slot_was_set:
+    - transfer_state: Haryana
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slot_values
+  - intent: goodbye
+  - action: utter_goodbye
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_need_help
+  - intent: money_transfer
+  - action: money_transfer_form
+  - active_loop: money_transfer_form
+  - slot_was_set:
+    - requested_slot: person_name
+  - slot_was_set:
+    - person_name: Samarth
+  - slot_was_set:
+    - requested_slot: bank_name
+  - slot_was_set:
+    - bank_name: Indian
+  - slot_was_set:
+    - requested_slot: transfer_amount
+  - slot_was_set:
+    - transfer_amount: '5000'
+  - slot_was_set:
+    - requested_slot: transfer_state
+  - slot_was_set:
+    - transfer_state: Haryana
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_submit
+  - action: utter_slot_values
+  - intent: goodbye
+  - action: utter_goodbye
